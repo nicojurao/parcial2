@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Crear base de datos
+{% endblock %}
+
+{% block content %}
+<div class="container mt-3">
+    <h1 class="h3 text-center">Crear base de datos</h1>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        <ul class=flashes>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    {% endwith %}
+
+
+    <form action="/guardar" method="post">
+        <div class="mb-3">
+            
+
+            <label for="localhost">voy a crear mi base de datos en siguiente ruta/ip:(localhost)</label>
+            <div class="mb-3">  <input type="text" name="ip"><br/>    </div>
+
+
+            <label for="usuario">la credencial de usuario para mi base de datos es:(root)</label>
+            <div class="mb-3">  <input type="text" name="user"><br/>    </div>
+
+            <label for="contraseña">la contraseña de mi base de datos es:(si no hay dejar vacio)</label>
+            <div class="mb-3">  <input type="text" name="pass"><br/>    </div>
+
+            <label for="namedb">Introduzca el nombre que le quiere dar a la base de datos que creara:</label>
+            <div class="mb-3">  <input type="text" name="namedb"><br/>    </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">Guardar</button>
+        <a class="btn btn-secondary" href="/">Volver al listado de bases de datos</a>
+
+
+
+
+</div>
+{% endblock %}
+    

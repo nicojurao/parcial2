@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Listado de bases de datos
+{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="d-flex justify-content-between">
+        <h1 class="h3">Listado de bases de datos</h1>
+        <a class="btn btn-primary" href="/crear">Crear base de datos</a>
+    </div>
+    
+
+
+    <table class="table mt-3">
+        <tr>
+            <th>Base de datos</th>
+
+        </tr>
+        
+        {% for user in users %}
+        <tr>
+            <td>{{ user.Database }}</td>
+        </tr>   
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}
