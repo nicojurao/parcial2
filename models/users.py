@@ -2,27 +2,47 @@ import mysql.connector
 from flask import Flask, render_template, request, redirect, flash
 
 
-DB = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='',
-    port=3306
-)
 
-def getAllUsers():
+
+def listarDB():
     
+    direccion = request.form['ip']
+    usuario = request.form['user']
+    contrasena = request.form['pass']
+    puerto = request.form['port']
+
+    DB = mysql.connector.connect(
+    host=f'{direccion}',
+    user=f'{usuario}',
+    password=f'{contrasena}',
+    database='',
+    port=f'{puerto}'
+    )
     cursor = DB.cursor(dictionary=True)
 
     cursor.execute('SHOW DATABASES')
 
     return cursor.fetchall()
 
-def addDB():
+def guardarDB():
+    
+    nombre = request.form['namedb']
+    direccion = request.form['ip']
+    usuario = request.form['user']
+    contrasena = request.form['pass']
 
-    cursor = DB.cursor(dictionary=True)
+    
+    DB = mysql.connector.connect(
+    host=f'{direccion}',
+    user=f'{usuario}',
+    password=f'{contrasena}',
+    database='',
+    port=3306
+    )
 
-    cursor.execute('CREATE DATABASE gomenasai;')
+    cursor=DB.cursor(dictionary=True)
 
+    cursor.execute(f"CREATE DATABASE {nombre}")
     DB.commit()
     cursor.close()
+    return redirect('/crear')

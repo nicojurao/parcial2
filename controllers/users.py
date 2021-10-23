@@ -2,10 +2,15 @@ from flask import flash
 from models import users
 import hashlib
 
-def getAllUsers():
-    dataUsers = users.getAllUsers()
+def listarDB():
+    dataDB = users.listarDB()
     
-    return dataUsers
+    return dataDB
+
+def guardarDB():
+    guardarDB=users.guardarDB()
+
+    return guardarDB
 
 
 

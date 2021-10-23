@@ -5,12 +5,36 @@ Listado de bases de datos
 {% endblock %}
 
 {% block content %}
+
 <div class="container mt-4">
+
     <div class="d-flex justify-content-between">
-        <h1 class="h3">Listado de bases de datos</h1>
-        <a class="btn btn-primary" href="/crear">Crear base de datos</a>
-    </div>
+
+
+        <form action="/listar" method="post">
+            <div class="mb-3">
+                
     
+                <label for="localhost">Direccion IP</label>
+                <div class="mb-3">  <input type="text" name="ip" value="localhost"><br/>    </div>
+    
+                <label for="usuario">Usuario(root)</label>
+                <div class="mb-3">  <input type="text" name="user" value="root"><br/>    </div>
+    
+                <label for="contraseña">Contraseña</label>
+                <div class="mb-3">  <input type="text" name="pass"><br/>    </div>
+    
+                <label for="puerto">Puerto</label>
+                <div class="mb-3">  <input type="text" name="port" value="3306"><br/>    </div>
+            </div>
+    
+            <button class="btn btn-primary" type="submit">listar</button>
+
+        </form>
+    </div>
+    <div> <a class="btn btn-primary" href="/crear">Crear base de datos</a> </br> </div>
+    <h1 class="h3">Listado de bases de datos</h1>
+
 
 
     <table class="table mt-3">
